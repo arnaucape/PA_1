@@ -12,7 +12,6 @@ public class ZombieLvl1 : FiniteStateMachine
 
     private WanderPlusAvoid wander;
     private FlockingAroundPlusAvoid flock;
-    private Flee flee;
     private KinematicState ks;
     private GameObject bbObject;
     private Zombie_Blackboard bbZombie;
@@ -30,7 +29,23 @@ public class ZombieLvl1 : FiniteStateMachine
         bbInfo = GameObject.Find("DynamicBB").GetComponent<DynamicZombie_Blackboard>();
 
         flock.enabled = false;
+        flock.attractor = null;
         wander.enabled = false;
+    }
+
+    public override void Exit()
+    {
+        // stop any steering that may be enabled
+        flock.enabled = false;
+        flock.attractor = null;
+        wander.enabled = false;
+        base.Exit();
+    }
+
+    public override void ReEnter()
+    {
+        currentState = State.INITIAL;
+        base.ReEnter();
     }
 
     // Update is called once per frame
@@ -70,7 +85,6 @@ public class ZombieLvl1 : FiniteStateMachine
             case State.FLOCK:
                 flock.enabled = false;
                 target = null;
-
                 flock.attractor = null;                
                 break;
         }

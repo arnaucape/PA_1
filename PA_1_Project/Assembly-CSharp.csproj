@@ -69,6 +69,7 @@
     <Compile Include="Assets\FSMs_and_BckBs\FiniteStateMachine.cs" />
     <Compile Include="Assets\FSMs_and_BckBs\HEN_BLACKBOARD.cs" />
     <Compile Include="Assets\FSMs_and_BckBs\ZombieLvl1.cs" />
+    <Compile Include="Assets\FSMs_and_BckBs\ZombieLvl2.cs" />
     <Compile Include="Assets\FSMs_and_BckBs\Zombie_Blackboard.cs" />
     <Compile Include="Assets\OtherScripts\ControlScript.cs" />
     <Compile Include="Assets\OtherScripts\DebugExtension.cs" />

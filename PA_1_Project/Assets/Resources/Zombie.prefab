@@ -10,11 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4279008918031533377}
   - component: {fileID: 4279008918031533376}
-  - component: {fileID: 4279008918031533438}
-  - component: {fileID: 4279008918031533437}
-  - component: {fileID: 4279008918031533436}
-  - component: {fileID: 4279008918031533379}
+  - component: {fileID: 7970758799261979666}
+  - component: {fileID: -7861663336312083552}
   - component: {fileID: 4279008918031533378}
+  - component: {fileID: 2162418898348608935}
+  - component: {fileID: 2663594848255286691}
+  - component: {fileID: -3015866915883438860}
+  - component: {fileID: -1267226308785260317}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -86,7 +88,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4279008918031533438
+--- !u!114 &7970758799261979666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279008918031533383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbdf4088b30771478f4fe3ca7a5e611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+--- !u!114 &-7861663336312083552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,75 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
---- !u!114 &4279008918031533437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4279008918031533383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f7cbbdf0d23565448d7ea26fd3b99ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAcceleration: 0.1
-  maxSpeed: 0.5
-  maxAngularAcceleration: 20
-  maxAngularSpeed: 20
-  position: {x: 0, y: 0, z: 0}
-  orientation: 0
-  linearVelocity: {x: 0, y: 0, z: 0}
-  angularSpeed: 0
---- !u!114 &4279008918031533436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4279008918031533383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ecc213ba3da7f488573347a75718ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRate: 5
-  wanderRadius: 2
-  wanderOffset: 10
-  showWhisker: 1
-  lookAheadLength: 5
-  avoidDistance: 2
-  secondaryWhiskerAngle: 15
-  secondaryWhiskerRatio: 0.7
-  rotationalPolicy: 1
---- !u!114 &4279008918031533379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4279008918031533383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9611247310b0a594fa570ec05694096e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationalPolicy: 1
-  attractor: {fileID: 0}
-  idTag: Zombie
-  cohesionThreshold: 20
-  repulsionThreshold: 5
-  wanderRate: 5
-  seekWeight: 0.6
-  vmWeight: 0.08
-  rpWeight: 0.19
-  coWeight: 0.1
-  wdWeight: 0.23
-  showWhisker: 1
-  lookAheadLength: 5
-  avoidDistance: 5
-  secondaryWhiskerAngle: 15
-  secondaryWhiskerRatio: 0.7
 --- !u!114 &4279008918031533378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,9 +126,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b2cdbb11408c447a17358cadbc0fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundDetectableRadius: 30
-  soundTalkableRadius: 60
-  playerDetectioneRadius: 80
+  soundDetectableRadius: 60
+  soundTalkableRadius: 240
+  playerDetectionRadius: 80
   playerFarEnoughRadius: 150
   zombieTag: Zombie
   soundTag: Sound
+  playerTag: Player
+--- !u!114 &2162418898348608935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279008918031533383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7cbbdf0d23565448d7ea26fd3b99ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 3
+  maxSpeed: 8
+  maxAngularAcceleration: 80
+  maxAngularSpeed: 50
+  position: {x: 0, y: 0, z: 0}
+  orientation: 0
+  linearVelocity: {x: 0, y: 0, z: 0}
+  angularSpeed: 0
+--- !u!114 &2663594848255286691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279008918031533383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ecc213ba3da7f488573347a75718ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRate: 30
+  wanderRadius: 10
+  wanderOffset: 0
+  showWhisker: 1
+  lookAheadLength: 10
+  avoidDistance: 10
+  secondaryWhiskerAngle: 30
+  secondaryWhiskerRatio: 0.7
+  rotationalPolicy: 1
+--- !u!114 &-3015866915883438860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279008918031533383}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9611247310b0a594fa570ec05694096e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationalPolicy: 1
+  attractor: {fileID: 0}
+  idTag: Zombie
+  cohesionThreshold: 45
+  repulsionThreshold: 25
+  wanderRate: 10
+  seekWeight: 0.4
+  vmWeight: 0.08
+  rpWeight: 0.4
+  coWeight: 0.3
+  wdWeight: 0.02
+  showWhisker: 1
+  lookAheadLength: 10
+  avoidDistance: 10
+  secondaryWhiskerAngle: 30
+  secondaryWhiskerRatio: 0.7
+--- !u!114 &-1267226308785260317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279008918031533383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a7351400fffc349b5c0699488d25c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rotationalPolicy: 1
