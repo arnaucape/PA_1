@@ -11,7 +11,7 @@ public class Dog_Blackboard : MonoBehaviour
 
     public float foodDetectionRadius = 80f;
     public float foodFarEnoughRadius = 150f;
-    public float foodCloseEnoughRadius = 5f;
+    public float foodCloseEnoughRadius = 0f;
     public float eatTime = 2f;
 
     public string zombieTag = "Zombie";

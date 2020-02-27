@@ -30,21 +30,21 @@ public class DogLvl1 : FiniteStateMachine
         //bbInfo = GameObject.Find("DynamicBB").GetComponent<DynamicZombie_Blackboard>();
 
         
-        wander.enabled = false;
+       
     }
 
     public override void Exit()
     {
         // stop any steering that may be enabled
-        
+        soundWave.active = false;
         wander.enabled = false;
         base.Exit();
     }
 
     public override void ReEnter()
     {
-        
         currentState = State.INITIAL;
+        wander.enabled = true;
         base.ReEnter();
     }
 

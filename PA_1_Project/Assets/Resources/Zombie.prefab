@@ -198,9 +198,9 @@ MonoBehaviour:
   coWeight: 0.3
   wdWeight: 0.02
   showWhisker: 1
-  lookAheadLength: 10
-  avoidDistance: 10
-  secondaryWhiskerAngle: 30
+  lookAheadLength: 5
+  avoidDistance: 50
+  secondaryWhiskerAngle: 50
   secondaryWhiskerRatio: 0.7
 --- !u!114 &-1267226308785260317
 MonoBehaviour:
