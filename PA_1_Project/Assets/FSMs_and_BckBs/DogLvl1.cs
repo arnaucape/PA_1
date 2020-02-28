@@ -14,7 +14,7 @@ public class DogLvl1 : FiniteStateMachine
     private GameObject bbObject;
     private Dog_Blackboard bbDog;
     private GameObject soundWave;
-   // private DynamicZombie_Blackboard bbInfo;
+    private DynamicZombie_Blackboard bbInfo;
 
     private GameObject target;
 
@@ -27,7 +27,7 @@ public class DogLvl1 : FiniteStateMachine
         wander = GetComponent<WanderPlusAvoid>();
         ks = GetComponent<KinematicState>();
         bbDog = GetComponent<Dog_Blackboard>();
-        //bbInfo = GameObject.Find("DynamicBB").GetComponent<DynamicZombie_Blackboard>();
+        bbInfo = GameObject.Find("DynamicBB").GetComponent<DynamicZombie_Blackboard>();
 
         
        
@@ -37,6 +37,7 @@ public class DogLvl1 : FiniteStateMachine
     {
         // stop any steering that may be enabled
         soundWave.active = false;
+        bbInfo.soundDetected = null;
         wander.enabled = false;
         base.Exit();
     }
@@ -86,7 +87,7 @@ public class DogLvl1 : FiniteStateMachine
             case State.BARK:
                 target = null;
                 soundWave.active = false;
-
+                bbInfo.soundDetected = null;
                 break;
         }
 
