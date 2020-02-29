@@ -169,9 +169,9 @@ MonoBehaviour:
   wanderRadius: 10
   wanderOffset: 0
   showWhisker: 1
-  lookAheadLength: 10
-  avoidDistance: 10
-  secondaryWhiskerAngle: 30
+  lookAheadLength: 40
+  avoidDistance: 40
+  secondaryWhiskerAngle: 40
   secondaryWhiskerRatio: 0.7
   rotationalPolicy: 1
 --- !u!114 &-3015866915883438860
@@ -198,9 +198,9 @@ MonoBehaviour:
   coWeight: 0.3
   wdWeight: 0.02
   showWhisker: 1
-  lookAheadLength: 10
-  avoidDistance: 10
-  secondaryWhiskerAngle: 30
+  lookAheadLength: 40
+  avoidDistance: 40
+  secondaryWhiskerAngle: 40
   secondaryWhiskerRatio: 0.7
 --- !u!114 &-1267226308785260317
 MonoBehaviour:
