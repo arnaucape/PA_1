@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7cbbdf0d23565448d7ea26fd3b99ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 40
+  maxAcceleration: 100
   maxSpeed: 25
   maxAngularAcceleration: 45
   maxAngularSpeed: 45
@@ -461,7 +461,7 @@ MonoBehaviour:
   zombieTag: Zombie
   zombieCloseEnough: 20
   zombieFarEnough: 30
-  repulsionForce: 0.5
+  repulsionForce: 0.8
   hideout: {fileID: 1542494795}
   hideoutRadius: 5
   resourcesFound: {fileID: 0}

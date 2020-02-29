@@ -60,7 +60,8 @@ public class ZombieLvl2 : FiniteStateMachine
                 }
                 break;
             case State.FLOCK:
-                if (SensingUtils.DistanceToTarget(this.gameObject, target) > bbZombie.playerFarEnoughRadius)
+                if (SensingUtils.DistanceToTarget(this.gameObject, target) > bbZombie.playerFarEnoughRadius
+                    || target.tag != bbZombie.playerTag)
                 {
                     ChangeState(State.LVL1);
                     break;
