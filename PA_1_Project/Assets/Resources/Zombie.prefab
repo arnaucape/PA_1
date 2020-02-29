@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2162418898348608935}
   - component: {fileID: 2663594848255286691}
   - component: {fileID: -3015866915883438860}
-  - component: {fileID: -1267226308785260317}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -147,8 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAcceleration: 3
   maxSpeed: 8
-  maxAngularAcceleration: 80
-  maxAngularSpeed: 50
+  maxAngularAcceleration: 120
+  maxAngularSpeed: 120
   position: {x: 0, y: 0, z: 0}
   orientation: 0
   linearVelocity: {x: 0, y: 0, z: 0}
@@ -189,30 +188,16 @@ MonoBehaviour:
   rotationalPolicy: 1
   attractor: {fileID: 0}
   idTag: Zombie
-  cohesionThreshold: 45
-  repulsionThreshold: 25
+  cohesionThreshold: 30
+  repulsionThreshold: 10
   wanderRate: 10
-  seekWeight: 0.4
+  seekWeight: 0.6
   vmWeight: 0.08
-  rpWeight: 0.4
-  coWeight: 0.3
+  rpWeight: 0.32
+  coWeight: 0.18
   wdWeight: 0.02
   showWhisker: 1
   lookAheadLength: 40
   avoidDistance: 40
   secondaryWhiskerAngle: 40
   secondaryWhiskerRatio: 0.7
---- !u!114 &-1267226308785260317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4279008918031533383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05a7351400fffc349b5c0699488d25c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  rotationalPolicy: 1
