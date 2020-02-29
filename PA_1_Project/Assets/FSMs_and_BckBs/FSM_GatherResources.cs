@@ -34,7 +34,6 @@ public class FSM_GatherResources : FiniteStateMachine
     public override void ReEnter()
     {
         base.ReEnter();
-        this.tag = "Player";
 
         ChangeState(State.INITIAL);
     }
@@ -50,7 +49,6 @@ public class FSM_GatherResources : FiniteStateMachine
             blackboard.resourcesFound = null;
         }
 
-        this.tag = "Player";
         wanderAround.enabled = false;
         arrive.enabled = false;
     }
@@ -101,7 +99,6 @@ public class FSM_GatherResources : FiniteStateMachine
                 arrive.enabled = false;
                 break;
             case State.WAIT:
-                this.tag = "Player";
                 break;
             default:
                 break;
@@ -124,7 +121,6 @@ public class FSM_GatherResources : FiniteStateMachine
                 break;
             case State.WAIT:
                 waitTimer = blackboard.waitDuration;
-                this.tag = "Untagged";
                 break;
             default:
                 break;

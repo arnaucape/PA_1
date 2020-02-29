@@ -65,7 +65,6 @@ public class FSM_SurvivorPanic : FiniteStateMachine
                 flee.enabled = false;
                 break;
             case State.WAITING_INSIDE_HIDEOUT:
-                this.tag = "Player";
                 break;
             default:
                 break;
@@ -84,7 +83,6 @@ public class FSM_SurvivorPanic : FiniteStateMachine
                 break;
             case State.WAITING_INSIDE_HIDEOUT:
                 blackboard.insideHideout = true;
-                this.tag = "Untagged";
                 break;
             default:
                 break;
