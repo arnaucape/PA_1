@@ -24,14 +24,13 @@ public class DogLvl3 : FiniteStateMachine
         flee = GetComponent<FleePlusAvoid>();
         ks = GetComponent<KinematicState>();
         bbDog = GetComponent<Dog_Blackboard>();
-
         lvl2.enabled = false;
         flee.enabled = false;
     }
 
     public override void Exit()
     {
-        // stop any steering that may be enabled
+        //Stop any steering that may be enabled
         lvl2.enabled = false;
         flee.enabled = false;
         base.Exit();
@@ -49,11 +48,9 @@ public class DogLvl3 : FiniteStateMachine
         switch (currentState)
         {
             case State.INITIAL:
-                
-                    ChangeState(State.LVL2);
-
+                ChangeState(State.LVL2);
                 break;
-           
+
             case State.LVL2:
                 target = SensingUtils.FindInstanceWithinRadius(this.gameObject, bbDog.zombieTag, bbDog.zombieTooClose);
                 if (target != null)
@@ -62,16 +59,14 @@ public class DogLvl3 : FiniteStateMachine
                     break;
                 }
                 break;
+
             case State.FLEE:
                 target = SensingUtils.FindInstanceWithinRadius(this.gameObject, bbDog.zombieTag, bbDog.zombieDetectRadius);
                 flee.target = target;
-                Debug.Log(target);
                 if (target == null)
                 {
-                    
-                        ChangeState(State.LVL2);
-                        break;
-                    
+                    ChangeState(State.LVL2);
+                    break;
                 }
                 break;
         }
@@ -82,10 +77,11 @@ public class DogLvl3 : FiniteStateMachine
         switch (currentState)
         {
             case State.INITIAL: break;
-           
+
             case State.LVL2:
                 lvl2.Exit();
                 break;
+
             case State.FLEE:
                 flee.enabled = false;
                 target = null;
@@ -95,15 +91,14 @@ public class DogLvl3 : FiniteStateMachine
         switch (newState)
         {
             case State.INITIAL: break;
-          
 
             case State.LVL2:
                 lvl2.enabled = true;
                 flee.target = null;
                 flee.enabled = false;
                 lvl2.ReEnter();
-
                 break;
+
             case State.FLEE:
                 //flee.target = target;
                 flee.enabled = true;
