@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Dog_Blackboard))]
 public class DogLvl1 : FiniteStateMachine
 {
-    public enum State { INITIAL, WANDER, BARK}; //Flock -> all zombies going to the sound act as a flock
+    public enum State { INITIAL, WANDER, BARK}; 
     public State currentState = State.INITIAL;
 
     private WanderPlusAvoid wander;
@@ -22,7 +22,6 @@ public class DogLvl1 : FiniteStateMachine
     void Start()
     {
         int Childcount = transform.childCount;
-        Debug.Log(Childcount);
         soundWave = transform.GetChild(Childcount -1).gameObject;
         wander = GetComponent<WanderPlusAvoid>();
         ks = GetComponent<KinematicState>();
@@ -36,16 +35,40 @@ public class DogLvl1 : FiniteStateMachine
     public override void Exit()
     {
         // stop any steering that may be enabled
+        if (soundWave == null)
+        {
+            int Childcount = transform.childCount;
+            soundWave = transform.GetChild(Childcount - 1).gameObject;
+        }
+        if (bbInfo.soundDetected == null)
+        {
+            bbInfo = GameObject.Find("DynamicBB").GetComponent<DynamicZombie_Blackboard>();
+            
+        }
+        if (wander == null)
+        {
+            wander = GetComponent<WanderPlusAvoid>();
+            
+        }
         soundWave.active = false;
         bbInfo.soundDetected = null;
         wander.enabled = false;
+
+
+
         base.Exit();
     }
 
     public override void ReEnter()
     {
         currentState = State.INITIAL;
+
+        if (wander == null)
+        {
+            wander = GetComponent<WanderPlusAvoid>();
+        }
         wander.enabled = true;
+
         base.ReEnter();
     }
 

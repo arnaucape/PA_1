@@ -9,7 +9,7 @@ public class Dog_Blackboard : MonoBehaviour
     
     public float zombieFarEnoughRadius = 70f;
 
-    public float foodDetectionRadius = 80f;
+    public float foodDetectionRadius = 60f;
     public float foodFarEnoughRadius = 150f;
     public float foodCloseEnoughRadius = 0f;
     public float eatTime = 2f;

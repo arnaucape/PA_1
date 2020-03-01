@@ -29,8 +29,8 @@ public class DogLvl2 : FiniteStateMachine
         ks = GetComponent<KinematicState>();
         bbDog = GetComponent<Dog_Blackboard>();
         arrive = GetComponent<ArrivePlusAvoid>();
-
         lvl1.enabled = false;
+        arrive.enabled = false;
        // flee.enabled = false;
     }
 
@@ -38,7 +38,8 @@ public class DogLvl2 : FiniteStateMachine
     {
         lvl1.Exit();
         // stop any steering that may be enabled
-        lvl1.enabled = true;
+        lvl1.enabled = false;
+        arrive.target = null;
         arrive.enabled = false;
         currentState = State.INITIAL;
         base.Exit();
@@ -46,8 +47,8 @@ public class DogLvl2 : FiniteStateMachine
 
     public override void ReEnter()
     {
-
-
+        arrive.enabled = false;
+        arrive.target = null;
         target = null;
         currentState = State.INITIAL;
         base.ReEnter();
@@ -70,30 +71,36 @@ public class DogLvl2 : FiniteStateMachine
                     break;
                 }
                 break;
+               
             case State.FINDFOOD:
                 target = SensingUtils.FindInstanceWithinRadius(this.gameObject, bbDog.foodTag, bbDog.foodDetectionRadius);
-                arrive.target = target;
-                Debug.Log(target);
-
-                if (SensingUtils.DistanceToTarget(this.gameObject, target)<= bbDog.foodCloseEnoughRadius)
+                if (target != null)
                 {
-                    
-                    ChangeState(State.EAT);
-                    
-                    break;
-                    
+                    arrive.target = target;
+                
+                    if (SensingUtils.DistanceToTarget(this.gameObject, target) <= bbDog.foodCloseEnoughRadius)
+                    {
+
+                        ChangeState(State.EAT);
+
+                        break;
+
+                    }
                 }
-               
+                else
+                {
+                    ChangeState(State.LVL1);
+                    break;
+                }
                 break;
+
+
             case State.EAT:
                 Debug.Log(timer);
-                //if (timer >= 1f)
-                //{
-                //    Destroy(target.gameObject);
-                //}
+               
                 if (timer >= bbDog.eatTime)
                 {
-                    Destroy(arrive.target);
+                   
                     ChangeState(State.LVL1);
                     break;
 
@@ -121,7 +128,7 @@ public class DogLvl2 : FiniteStateMachine
                 break;
 
             case State.EAT:
-                //flee.target = target;
+                Destroy(arrive.target);
                 timer = 0;
                 break;
         }
